@@ -14,13 +14,15 @@ function SearchBar() {
       </div>
       <div className="welcome">
         <div className="title">
-          <div className="title-typeweather"></div>
+          <div className="title-typeweather">
+            Welcome to <span className="typeweather">TypeWeather!</span>
+          </div>
           <div className="explanation">
-            
+            Choose a location to see the weather forecast
           </div>
         </div>
+        <div className="text-field"><input type="text" /></div>
       </div>
-      <div>SearchBar</div>
     </>
   );
 }

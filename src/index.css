@@ -2,6 +2,10 @@ body {
   margin: 0;
   /*background image from public folder */
   background-image: url('../public/background.png');
+  /* fit the image*/
+  background-size: cover;
+  /* center the image */
+  background-position: center;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -20,12 +24,12 @@ code {
     monospace;
 }
 
-
+/* LOGO */
 .logo{  
     position: absolute;
     width: 186px;
     height: 32px;
-    left: calc(50% - 186px/2 - 0.5px);
+    left: 60px;
     top: 48px;
   
     opacity: 0.8;
@@ -73,3 +77,99 @@ code {
   top: 2px;
   color: #FAFAFA;
 }
+
+/* WELCOME PART */
+.welcome{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px;
+  gap: 32px;
+
+  position: absolute;
+  width: 311px;
+  height: 14px;
+  left: calc(50% - 311px/2);
+  top: 250px;
+}
+
+.title{
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+    text-align: center;
+  padding: 0px;
+  gap: 4px;
+
+  width: 311px;
+  height: 52px;
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.title-typeweather{
+/* Welcome to TypeWeather */
+
+  width: 311px;
+  height: 28px;
+
+  /* Heading md */
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 140%;
+  /* identical to box height, or 28px */
+  
+  
+
+  /* Base/Gray 100 */
+  color: #FAFAFA;
+
+
+  /* Inside auto layout */
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+span{
+  color: #8FB2F5;;
+}
+
+.explanation{
+  color : #BFBFD4;
+}
+
+.text-field{
+/* Text Field */
+
+  /* Auto layout */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 20px;
+
+  width: 311px;
+  height: 56px;
+
+  /* Base/Gray-600
+
+Input
+*/
+  background: #1E1E29;
+  border-radius: 8px;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
+  
+}
+
+
