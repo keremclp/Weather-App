@@ -1,33 +1,36 @@
 import React from "react";
 /*import Logo.svg from public folder*/
 import Logo from "../Vector.svg";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 function SearchBar({ onCitySelect }) {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [searchResults, setSearchResults] = useState([]);
-  // const apiKey = process.env.WEATHER_APP_KEY; check the using of env variables
-  const handleInputChange = (e) => {
-    const term = e.target.value;
-    setSearchTerm(term);
-    fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${term}&appid=ca248cee0c1175401424a91fab6b1b59`
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        setSearchResults(data.list);
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-      });
+  const [city, setCity] = useState("");
+  const [weatherData, setWeatherData] = useState(null);
+  const [error, setError] = useState(null);
+
+  const handleChange = async (e) => {
+    const cityName = e.target.value;
+    setCity(cityName);
+
+    try {
+      const response = await axios.get(
+        `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=ca248cee0c1175401424a91fab6b1b59`
+      );
+      setWeatherData(response.data);
+      setError(null);
+    } catch (error) {
+      setError("Error fetching weather data. Please check your city name.");
+      setWeatherData(null);
+    }
   };
 
-  const handleSelectCity = (city) => {
-    onCitySelect(city);
-    setSearchTerm("");
-    setSearchResults([]);
-  };
+  useEffect(() => {}, [weatherData]);
 
+  const handleSelectCity = (selectedCity) => {
+    // Handle when a city is selected from the combobox
+    console.log(selectedCity);
+    console.log("Selected city:", selectedCity);
+  };
   return (
     /*Use logo.svg*/
     <>
@@ -51,9 +54,15 @@ function SearchBar({ onCitySelect }) {
           <input
             type="text"
             placeholder="Search a location"
-            value={searchTerm}
-            onChange={handleInputChange}
+            value={city}
+            onChange={handleChange}
           />
+          <select onChange={handleChange}>
+            <option>Select a city</option>
+            {weatherData && (
+              <option value={weatherData.name}>{weatherData.name}</option>
+            )}
+          </select>
         </div>
       </div>
     </>
