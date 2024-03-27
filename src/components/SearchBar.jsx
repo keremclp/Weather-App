@@ -21,7 +21,9 @@ function SearchBar() {
             Choose a location to see the weather forecast
           </div>
         </div>
-        <div className="text-field"><input type="text" /></div>
+        <div className="text-field">
+          <input type="text" placeholder="Search a location" />
+        </div>
       </div>
     </>
   );
