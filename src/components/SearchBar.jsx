@@ -1,36 +1,21 @@
 import React from "react";
 /*import Logo.svg from public folder*/
 import Logo from "../Vector.svg";
-import { useState, useEffect } from "react";
+import { useState, Fragment } from "react";
 import axios from "axios";
-function SearchBar({ onCitySelect }) {
-  const [city, setCity] = useState("");
-  const [weatherData, setWeatherData] = useState(null);
-  const [error, setError] = useState(null);
+import { Combobox, Transition } from "@headlessui/react";
 
-  const handleChange = async (e) => {
-    const cityName = e.target.value;
-    setCity(cityName);
+function SearchBar({ onSearchChange }) {
+  const [search, setSearch] = useState(null);
+  const [query, setQuery] = useState("");
 
-    try {
-      const response = await axios.get(
-        `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=ca248cee0c1175401424a91fab6b1b59`
-      );
-      setWeatherData(response.data);
-      setError(null);
-    } catch (error) {
-      setError("Error fetching weather data. Please check your city name.");
-      setWeatherData(null);
-    }
+  const handleOnChange = (searchData) => {
+    setSearch(searchData);
+    // Call callback function passed in by parent with
+    // the search data
+    onSearchChange(searchData);
   };
 
-  useEffect(() => {}, [weatherData]);
-
-  const handleSelectCity = (selectedCity) => {
-    // Handle when a city is selected from the combobox
-    console.log(selectedCity);
-    console.log("Selected city:", selectedCity);
-  };
   return (
     /*Use logo.svg*/
     <>
@@ -50,20 +35,25 @@ function SearchBar({ onCitySelect }) {
             Choose a location to see the weather forecast
           </div>
         </div>
-        <div className="text-field">
-          <input
-            type="text"
-            placeholder="Search a location"
-            value={city}
-            onChange={handleChange}
-          />
-          <select onChange={handleChange}>
-            <option>Select a city</option>
-            {weatherData && (
-              <option value={weatherData.name}>{weatherData.name}</option>
-            )}
-          </select>
-        </div>
+        <Combobox>
+          <div className="relative w-full">
+            <Combobox.Input
+              className="search-manufacturer__input"
+              placeholder="Wolswagen"
+              displayValue={search}
+              onChange={(e) => setQuery(e.target.value)}
+            />
+            <Transition
+              as={Fragment}
+              leave="transition ease-in duration-100"
+              leaveFrom="opacity-100"
+              leaveTo="opacity-0"
+              afterLeave={() => setQuery("")}
+            >
+              <Combobox.Options></Combobox.Options>
+            </Transition>
+          </div>
+        </Combobox>
       </div>
     </>
   );

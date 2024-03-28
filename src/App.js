@@ -3,9 +3,11 @@ import "./App.css";
 import Searchbar from "./components/SearchBar";
 
 function App() {
-  return (
-      <Searchbar />
-  );
+  const handleOnSearchChange = (searchData) => {
+    console.log(searchData);
+  };
+  
+  return <Searchbar onSearchChange={handleOnSearchChange} />;
 }
 
 export default App;
