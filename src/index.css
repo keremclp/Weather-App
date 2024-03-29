@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700;800&display=swap");
 body {
   margin: 0;
   /*background image from public folder */
@@ -32,7 +33,7 @@ code {
 .logo{  
     position: absolute;
       top: 40px;
-      left: 50%;
+      left: 48%;
       transform: translateX(-50%);
       width: 182px;
       height: 32px;
@@ -173,6 +174,7 @@ Input
   order: 1;
   align-self: stretch;
   flex-grow: 0;
+  font-family: 'Nunito', sans-serif;
   
 }
 

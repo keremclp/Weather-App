@@ -35,14 +35,13 @@ function SearchBar({ onSearchChange }) {
         return response.data[0].name.common;
       } else {
         console.error("Country name not found in response:", response.data);
-        return "Unknown"; 
+        return "Unknown";
       }
     } catch (error) {
       console.error("Error fetching country name:", error);
-      return "Unknown"; 
+      return "Unknown";
     }
   };
-
 
   useEffect(() => {
     if (searchResults.length > 0) {
@@ -50,9 +49,17 @@ function SearchBar({ onSearchChange }) {
         searchResults.map(async (result, index) => {
           const countryName = await fetchCountryName(result.country);
           return (
-            <Combobox.Option key={index} value={result.name}>
-              {result.name}, {result.country} {countryName}
-            </Combobox.Option>
+            <a href="/detail">
+              <Combobox.Option
+                key={index}
+                className="text-gray-800 bg-gray-800 px-4 py-3 rounded-t-lg rounded-b-lg border border-gray-300 transition ease-out duration-300 transform hover:scale-105"
+                value={result.name}
+              >
+                <div className="text-md font-nunito text-base font-normal leading-6 text-left text-gray-100">
+                  {result.name},{result.country} {countryName}
+                </div>
+              </Combobox.Option>
+            </a>
           );
         })
       ).then((resolvedOptions) => {
@@ -82,11 +89,14 @@ function SearchBar({ onSearchChange }) {
 
         <Combobox>
           <div className="relative w-full">
-            <Combobox.Input
-              className="search-manufacturer__input"
-              placeholder="Enter location..."
-              onChange={fetchCitiesNames}
-            />
+            <div className="text-field">
+              <Combobox.Input
+                className="w-full h-auto rounded-lg px-2"
+                aria-labelledby="location-label"
+                placeholder="Search location..."
+                onChange={fetchCitiesNames}
+              />
+            </div>
             <Transition
               as={Fragment}
               leave="transition ease-in duration-100"
