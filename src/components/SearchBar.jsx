@@ -1,12 +1,14 @@
 import React, { useState, Fragment, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
 import Logo from "../Vector.svg";
 import axios from "axios";
 import { Combobox, Transition } from "@headlessui/react";
 
-function SearchBar({ onSearchChange }) {
+function SearchBar() {
   const [searchResults, setSearchResults] = useState([]);
   const [query, setQuery] = useState("");
   const [options, setOptions] = useState([]);
+  const navigate = useNavigate();
 
   const fetchCitiesNames = async (e) => {
     const city_name = e.target.value;
@@ -43,23 +45,27 @@ function SearchBar({ onSearchChange }) {
     }
   };
 
+  const handleOptionClick = async (selectedResult) => {
+    // Navigate to Home component with selected result
+    navigate("/home", { state: { selectedResult } });
+  };
+
   useEffect(() => {
     if (searchResults.length > 0) {
       Promise.all(
         searchResults.map(async (result, index) => {
           const countryName = await fetchCountryName(result.country);
           return (
-            <a href="/detail">
-              <Combobox.Option
-                key={index}
-                className="text-gray-800 bg-gray-800 px-4 py-3 rounded-t-lg rounded-b-lg border border-gray-300 transition ease-out duration-300 transform hover:scale-105"
-                value={result.name}
-              >
-                <div className="text-md font-nunito text-base font-normal leading-6 text-left text-gray-100">
-                  {result.name},{result.country} {countryName}
-                </div>
-              </Combobox.Option>
-            </a>
+            <Combobox.Option
+              key={index}
+              className="text-gray-800 bg-gray-800 px-4 py-3 rounded-t-lg rounded-b-lg border border-gray-300 transition ease-out duration-300 transform hover:scale-105"
+              value={result.name}
+              onClick={() => handleOptionClick(result)}
+            >
+              <div className="text-md font-nunito text-base font-normal leading-6 text-left text-gray-100">
+                {result.name},{result.country} {countryName}
+              </div>
+            </Combobox.Option>
           );
         })
       ).then((resolvedOptions) => {
