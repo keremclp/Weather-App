@@ -1,5 +1,5 @@
 import React, { useState, Fragment, useEffect } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import Logo from "../Vector.svg";
 import axios from "axios";
 import { Combobox, Transition } from "@headlessui/react";
@@ -46,6 +46,7 @@ function SearchBar() {
   };
 
   const handleOptionClick = async (selectedResult) => {
+    console.log("Selected result:", selectedResult);
     // Navigate to Home component with selected result
     navigate("/home", { state: { selectedResult } });
   };
