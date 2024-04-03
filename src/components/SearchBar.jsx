@@ -4,23 +4,41 @@ import Logo from "../Vector.svg";
 import axios from "axios";
 import { Combobox, Transition } from "@headlessui/react";
 
-function SearchBar() {
+function SearchBar({ onSearchChange }) {
   const [searchResults, setSearchResults] = useState([]);
   const [query, setQuery] = useState("");
   const [options, setOptions] = useState([]);
   const navigate = useNavigate();
 
-  const fetchCitiesNames = async (e) => {
-    const city_name = e.target.value;
-    try {
-      const res = await axios.get(
+  const fetchCities = async (city_name) => {
+    console.log("fethcies");
+    return axios
+      .get(
         `http://api.openweathermap.org/geo/1.0/direct?q=${city_name}&limit=100000000&appid=ca248cee0c1175401424a91fab6b1b59`
-      );
-      setSearchResults(res.data);
-      setQuery(city_name);
-    } catch (err) {
-      console.error(err.message);
-    }
+      )
+      .then((response) => {
+        const options = response.data.map((city) => {
+          return {
+            value: `${city.lat} ${city.lon}`,
+            label: `${city.name}, ${city.country}`,
+          };
+        });
+       
+        setSearchResults(response.data);
+        onSearchChange(options);
+        return { options };
+      })
+      .catch((error) => {
+        console.error("Error loading options:", error);
+        return { options: [] }; // Return empty options array in case of error
+      });
+  };
+
+  const handleOnChange = (e) => {
+    const searchData = e.target.value;
+    fetchCities(searchData);
+    
+    setQuery(searchData);
   };
 
   const fetchCountryName = async (countryCode) => {
@@ -111,9 +129,10 @@ function SearchBar() {
             <div className="text-field">
               <Combobox.Input
                 className="w-full h-auto rounded-lg px-2"
+                value={query}
                 aria-labelledby="location-label"
                 placeholder="Search location..."
-                onChange={fetchCitiesNames}
+                onChange={handleOnChange}
               />
             </div>
             <Transition
@@ -121,7 +140,6 @@ function SearchBar() {
               leave="transition ease-in duration-100"
               leaveFrom="opacity-100"
               leaveTo="opacity-0"
-              afterLeave={() => setQuery("")}
             >
               <Combobox.Options>
                 {options.length > 0 ? options : <div>No results found</div>}
