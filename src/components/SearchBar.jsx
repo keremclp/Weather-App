@@ -11,7 +11,6 @@ function SearchBar({ onSearchChange }) {
   const navigate = useNavigate();
 
   const fetchCities = async (city_name) => {
-    console.log("fethcies");
     return axios
       .get(
         `http://api.openweathermap.org/geo/1.0/direct?q=${city_name}&limit=100000000&appid=ca248cee0c1175401424a91fab6b1b59`
@@ -64,7 +63,6 @@ function SearchBar({ onSearchChange }) {
   };
 
   const handleOptionClick = async (selectedResult) => {
-    console.log("Selected result:", selectedResult);
     // Navigate to Home component with selected result
     navigate("/home", { state: { selectedResult } });
   };

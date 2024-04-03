@@ -1,6 +1,7 @@
 import React from "react";
 
 function CurrentWeather({ data }) {
+  console.log("data:", data);
   return (
     <div>
       <h1>{data.city}</h1>

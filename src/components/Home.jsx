@@ -11,16 +11,18 @@ const Home = ({ currentWeather, forecast }) => {
   // Render your Home component with the selected result
   return (
     <div className="flex justify-center m-2 bg-gray-800  ">
-      <div className="p-8 bg-white  ">
-        <div className="text-slate-900">Home</div>
+      <div className="p-3 bg-white  ">
         <div className="card">
-          <div className="current-weather">
-          {currentWeather && <CurrentWeather data={currentWeather} />}
+          <div className="current-weather w-[335px] h-[304px]">
+            {currentWeather && <CurrentWeather data={currentWeather} />}
+          </div>
+        </div>
+        {/* <div className="current-weather">
+            {currentWeather && <CurrentWeather data={currentWeather} />}
           </div>
           <div className="forecast">
             {forecast && <Forecast data={forecast} />}
-          </div>
-        </div>
+          </div> */}
       </div>
     </div>
   );

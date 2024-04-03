@@ -9,11 +9,9 @@ function App() {
   const [forecast, setForecast] = useState(null);
 
   const handleOnSearchChange = (searchData) => {
-    console.log("SearchData", searchData);
     searchData.forEach((city) => {
       // Split the value property of each city object
       const [lat, lon] = city.value.split(" ");
-
       // Now you can use lat and lon as needed
       const currentWeatherFetch = fetch(
         `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=ca248cee0c1175401424a91fab6b1b59`
@@ -22,19 +20,18 @@ function App() {
         `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=ca248cee0c1175401424a91fab6b1b59&units=metric`
       );
 
-      
-
       Promise.all([currentWeatherFetch, forecastFetch])
         .then(async (response) => {
           const weatherResponse = await response[0].json();
           const forcastResponse = await response[1].json();
 
-          setCurrentWeather({ city: searchData.label, ...weatherResponse });
-          setForecast({ city: searchData.label, ...forcastResponse });
+          setCurrentWeather({ city: city.label, ...weatherResponse });
+          setForecast({ city: city.label, ...forcastResponse });
         })
         .catch();
     });
   };
+
   return (
     <div className="App">
       <BrowserRouter>

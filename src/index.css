@@ -6,7 +6,7 @@
 body {
   margin: 0;
   /*background image from public folder */
-  background-image: url('../public/background.png');
+  background-image: url('../assets/background.png');
   /* fit the image*/
   background-size: cover;
   background-position: center;
@@ -126,4 +126,12 @@ Input
 
 ul li{
   color:white
+}
+
+.current-weather{
+  background-image:   url('../assets/card-background.png');
+  background-size: cover;
+    background-position: center;
+  /* Give radius */
+  border-radius: 8px;
 }
