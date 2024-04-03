@@ -9,16 +9,20 @@ const Home = () => {
 
   // Render your Home component with the selected result
   return (
-    <div>
-      <h1 className="text-white">Hello World</h1>
-
-      {selectedResult && (
-        <>
-          <p className="text-white">{selectedResult.name}</p>
-          <p className="text-white">{selectedResult.country}</p>
-        </>
-      )}
-      {/* Render other content as needed */}
+    <div className="flex justify-center flex-col absolute ">
+      <div className="text-white">Home</div>
+      <div className="  text-white">
+        <div class="">
+          {selectedResult && (
+            <div class="">
+              <>
+                <p class="text-2xl font-bold ">{selectedResult.name}</p>
+                <p class="text-lg text-white">{selectedResult.country}</p>
+              </>
+            </div>
+          )}
+        </div>
+      </div>
     </div>
   );
 };
