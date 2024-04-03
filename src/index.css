@@ -135,3 +135,23 @@ ul li{
   /* Give radius */
   border-radius: 8px;
 }
+
+.location{
+  /* Location */
+  
+    /* Auto layout */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 2px;
+  
+    width: 124px;
+    height: 41px;
+  
+  
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
