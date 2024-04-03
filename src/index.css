@@ -9,8 +9,7 @@ body {
   background-image: url('../public/background.png');
   /* fit the image*/
   background-size: cover;
-  /* center the image */
-  background-position: center;
+
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -19,64 +18,6 @@ body {
   
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
-/* LOGO */
-.logo{  
-    position: absolute;
-      top: 40px;
-      left: 48%;
-      transform: translateX(-50%);
-      width: 182px;
-      height: 32px;
-    opacity: 0.8;
-}
-
-.logo-main{
-    position: absolute;
-    width: 127.85px;
-    height: 28px;
-    left: calc(50% - 127.85px/2 - 0.08px);
-    top: calc(50% - 28px/2);
-}
-
-.vector{
-  
-    position: absolute;
-    width: 36.4px;
-    height: 24px;
-    left: 29px;
-    bottom: 4px;
-}
-.text{
-  
-    position: absolute;
-    width: 6px;
-    height: 28px;
-    left: 72px;
-    top: 2px;
-  
-    font-family: 'Roboto Condensed';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 140%;
-  
-    color: #FFFFFF;
-}
-
-.text-layer {
-  position: absolute;
-  font-size: larger;
-  width: 78.85px;
-  height: 14.11px;
-  left: 78px;
-  top: 2px;
-  color: #FAFAFA;
-}
 
 /* WELCOME PART */
 .welcome{

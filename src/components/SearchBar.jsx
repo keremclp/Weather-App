@@ -78,11 +78,21 @@ function SearchBar() {
   return (
     <>
       <div className="flex justify-center items-start h-screen">
-        <div className=" p-4">
+        <div className="p-4 m-5 ">
           <div className="flex flex-row">
             <img src={Logo} alt="logo" className="  " />
-            <div className="">i</div>
-            <div className="">Weather</div>
+            <div
+              className="font-roboto-condensed font-bold text-lg leading-relaxed text-white
+"
+            >
+              i
+            </div>
+            <div
+              className="text-lg text-white
+"
+            >
+              Weather
+            </div>
           </div>
         </div>
       </div>
