@@ -109,7 +109,7 @@ function SearchBar({ onSearchChange }) {
       <div className="flex justify-center items-start h-screen">
         <div className="p-4 m-5 ">
           <div className="flex flex-row">
-            <img src={Logo} alt="logo" className="  " />
+            <img src={Logo} alt="logo" className="mr-1" />
             <div
               className="font-roboto-condensed font-bold text-lg leading-relaxed text-white
 "

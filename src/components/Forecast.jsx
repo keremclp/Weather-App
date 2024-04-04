@@ -2,7 +2,6 @@ import React from "react";
 
 const WEEK_DAYS = ["Mon", "Tue", "Wed", "Thu", "Sun"];
 function Forecast({ data }) {
-  console.log("forecast:", data);
   const dayInAWeek = new Date().getDay();
   const forecastDays = WEEK_DAYS.slice(dayInAWeek + 1).concat(
     WEEK_DAYS.slice(0, dayInAWeek + 1)

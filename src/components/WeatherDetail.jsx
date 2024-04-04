@@ -105,7 +105,7 @@ function WeatherDetail({ data }) {
               <div className="flex flex-row items-start justify-between ">
                 <div className="flex flex-row mb-5">
                   <img
-                    src={Sunrise}
+                    src={Humidity}
                     alt="logo"
                     className="w-6 h-6 object-contain"
                   />

@@ -9,7 +9,6 @@ function App() {
   const [forecast, setForecast] = useState(null);
 
   const handleOnSearchChange = (searchData) => {
-    console.log(searchData);
     searchData.forEach((city) => {
       // Split the value property of each city object
       const [lat, lon] = city.value.split(" ");
