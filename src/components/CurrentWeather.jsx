@@ -1,7 +1,6 @@
 import React from "react";
 import WeatherDetail from "./WeatherDetail";
 function CurrentWeather({ data }) {
-  console.log("data:", data.weather[0].icon);
   const getCurrentDayAndDate = () => {
     const currentDate = new Date();
     const options = {
@@ -37,7 +36,7 @@ function CurrentWeather({ data }) {
                 {Math.round(data.main.temp)}°<small>C</small>
               </p>
               <div className="">
-                <p className="font-nunito font-bold text-base leading-[22.4px] text-center">
+                <p className="font-nunito font-bold text-base leading-[22.4px] text-left">
                   {Math.round(data.main.temp_min)} °<small>C</small> /{" "}
                   {Math.round(data.main.temp_max)} °<small>C</small>
                 </p>
@@ -58,7 +57,6 @@ function CurrentWeather({ data }) {
           />
         )}
       </div>
-      <WeatherDetail data={data} />
     </div>
   );
 }
