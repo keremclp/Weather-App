@@ -1,5 +1,4 @@
 import React from "react";
-import WeatherDetail from "./WeatherDetail";
 function CurrentWeather({ data }) {
   const getCurrentDayAndDate = () => {
     const currentDate = new Date();
