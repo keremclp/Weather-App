@@ -20,10 +20,10 @@ function Forecast({ data }) {
                 alt="weather"
               />
               <p className="font-nunito font-bold text-xs text-white mt-6">
-                {item.main.temp}°C
+                {Math.round(item.main.temp)}°<small>C</small>
               </p>
               <p className="font-nunito font-normal text-xs text-gray-400">
-                {data.list[0].main.temp}
+                {Math.round(data.list[0].main.temp)}°<small>C</small>
               </p>
             </div>
           ))}

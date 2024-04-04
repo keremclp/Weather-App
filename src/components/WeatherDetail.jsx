@@ -71,7 +71,7 @@ function WeatherDetail({ data }) {
                     Wind Speed
                   </p>
                 </div>
-                <p className="text-white">{data.wind.speed} m/s</p>
+                <p className="text-white">{Math.round(data.wind.speed)} m/s</p>
               </div>
             </>
           )}
@@ -105,7 +105,7 @@ function WeatherDetail({ data }) {
               <div className="flex flex-row items-start justify-between ">
                 <div className="flex flex-row mb-5">
                   <img
-                    src={Humidity}
+                    src={Sunrise}
                     alt="logo"
                     className="w-6 h-6 object-contain"
                   />
