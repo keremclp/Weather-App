@@ -68,9 +68,8 @@ function SearchBar({ onSearchChange }) {
     setSelectedOption(selectedResult);
     setTimeout(() => {
       navigate("/home", { state: { selectedResult } });
-    }, 3000); 
+    }, 3000);
   };
-
 
   useEffect(() => {
     if (searchResults.length > 0) {
@@ -148,7 +147,11 @@ function SearchBar({ onSearchChange }) {
               />
               {selectedOption && (
                 <>
-                  <img src={Spinner} alt="spinner" />
+                  <img
+                    src={Spinner}
+                    alt="spinner"
+                    className="w-10 h-10 top-0.75 left-0.75"
+                  />
                 </>
               )}
             </div>
