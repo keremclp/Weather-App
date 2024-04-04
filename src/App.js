@@ -37,7 +37,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route
-            path="/Weather-App"
+            path="/"
             element={<Searchbar onSearchChange={handleOnSearchChange} />}
           />
           <Route
