@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/WeatherApp/static/css/main.64073527.css",
-    "main.js": "/WeatherApp/static/js/main.b303c19c.js",
-    "static/media/card-background.png": "/WeatherApp/static/media/card-background.5a3a3bfe8c57502e9733.png",
-    "static/media/background.png": "/WeatherApp/static/media/background.7818684120189dea8513.png",
-    "static/media/Sunrise.svg": "/WeatherApp/static/media/Sunrise.44a58330eed0fa43974ee5243a1466c7.svg",
-    "static/media/spinner-animated.svg": "/WeatherApp/static/media/spinner-animated.3673e2cdd96b64c81d7f23f925c1918c.svg",
-    "static/media/Wind.svg": "/WeatherApp/static/media/Wind.10ebc957ffa244c32e4af899f13313a9.svg",
-    "static/media/rain.svg": "/WeatherApp/static/media/rain.934dd9fe9d039636a5046ef806076f4c.svg",
-    "static/media/thermal.svg": "/WeatherApp/static/media/thermal.d969ae447acc100db65d303727ef08b7.svg",
-    "static/media/Humidity.svg": "/WeatherApp/static/media/Humidity.1d25c299cab13dd9160b95ccfbe23743.svg",
-    "static/media/Vector.svg": "/WeatherApp/static/media/Vector.a015105ec7862d48616a5a32b834576f.svg",
-    "index.html": "/WeatherApp/index.html",
-    "main.64073527.css.map": "/WeatherApp/static/css/main.64073527.css.map",
-    "main.b303c19c.js.map": "/WeatherApp/static/js/main.b303c19c.js.map"
+    "main.css": "/Weather-App/static/css/main.440c1f8e.css",
+    "main.js": "/Weather-App/static/js/main.0a9e92e7.js",
+    "static/media/card-background.png": "/Weather-App/static/media/card-background.5a3a3bfe8c57502e9733.png",
+    "static/media/background.png": "/Weather-App/static/media/background.7818684120189dea8513.png",
+    "static/media/Sunrise.svg": "/Weather-App/static/media/Sunrise.44a58330eed0fa43974ee5243a1466c7.svg",
+    "static/media/spinner-animated.svg": "/Weather-App/static/media/spinner-animated.3673e2cdd96b64c81d7f23f925c1918c.svg",
+    "static/media/Wind.svg": "/Weather-App/static/media/Wind.10ebc957ffa244c32e4af899f13313a9.svg",
+    "static/media/rain.svg": "/Weather-App/static/media/rain.934dd9fe9d039636a5046ef806076f4c.svg",
+    "static/media/thermal.svg": "/Weather-App/static/media/thermal.d969ae447acc100db65d303727ef08b7.svg",
+    "static/media/Humidity.svg": "/Weather-App/static/media/Humidity.1d25c299cab13dd9160b95ccfbe23743.svg",
+    "static/media/Vector.svg": "/Weather-App/static/media/Vector.a015105ec7862d48616a5a32b834576f.svg",
+    "index.html": "/Weather-App/index.html",
+    "main.440c1f8e.css.map": "/Weather-App/static/css/main.440c1f8e.css.map",
+    "main.0a9e92e7.js.map": "/Weather-App/static/js/main.0a9e92e7.js.map"
   },
   "entrypoints": [
-    "static/css/main.64073527.css",
-    "static/js/main.b303c19c.js"
+    "static/css/main.440c1f8e.css",
+    "static/js/main.0a9e92e7.js"
   ]
 }
