@@ -3,11 +3,13 @@ import { useNavigate } from "react-router-dom";
 import Logo from "../Vector.svg";
 import axios from "axios";
 import { Combobox, Transition } from "@headlessui/react";
+import Spinner from "../spinner-animated.svg";
 
 function SearchBar({ onSearchChange }) {
   const [searchResults, setSearchResults] = useState([]);
   const [query, setQuery] = useState("");
   const [options, setOptions] = useState([]);
+  const [selectedOption, setSelectedOption] = useState(false);
   const navigate = useNavigate();
 
   const fetchCities = async (city_name) => {
@@ -22,7 +24,7 @@ function SearchBar({ onSearchChange }) {
             label: `${city.name}, ${city.country}`,
           };
         });
-       
+
         setSearchResults(response.data);
         onSearchChange(options);
         return { options };
@@ -36,7 +38,7 @@ function SearchBar({ onSearchChange }) {
   const handleOnChange = (e) => {
     const searchData = e.target.value;
     fetchCities(searchData);
-    
+
     setQuery(searchData);
   };
 
@@ -63,9 +65,12 @@ function SearchBar({ onSearchChange }) {
   };
 
   const handleOptionClick = async (selectedResult) => {
-    // Navigate to Home component with selected result
-    navigate("/home", { state: { selectedResult } });
+    setSelectedOption(selectedResult);
+    setTimeout(() => {
+      navigate("/home", { state: { selectedResult } });
+    }, 3000); 
   };
+
 
   useEffect(() => {
     if (searchResults.length > 0) {
@@ -90,6 +95,15 @@ function SearchBar({ onSearchChange }) {
       });
     }
   }, [searchResults]);
+
+  useEffect(() => {
+    // Reset selected option after 3000 milliseconds
+    const timer = setTimeout(() => {
+      setSelectedOption(null);
+    }, 3000);
+
+    return () => clearTimeout(timer);
+  }, [selectedOption]);
 
   return (
     <>
@@ -132,6 +146,11 @@ function SearchBar({ onSearchChange }) {
                 placeholder="Search location..."
                 onChange={handleOnChange}
               />
+              {selectedOption && (
+                <>
+                  <img src={Spinner} alt="spinner" />
+                </>
+              )}
             </div>
             <Transition
               as={Fragment}
