@@ -4,7 +4,7 @@ import Logo from "../assets/Vector.svg";
 import axios from "axios";
 import { Combobox, Transition } from "@headlessui/react";
 import Spinner from "../assets/spinner-animated.svg";
-
+import { GEO_API_URL }  from '../api';
 function SearchBar({ onSearchChange }) {
   const [searchResults, setSearchResults] = useState([]);
   const [query, setQuery] = useState("");
@@ -15,7 +15,7 @@ function SearchBar({ onSearchChange }) {
   const fetchCities = async (city_name) => {
     return axios
       .get(
-        `https://api.openweathermap.org/geo/1.0/direct?q=${city_name}&limit=100000000&appid=ca248cee0c1175401424a91fab6b1b59`
+        `${GEO_API_URL}/direct?q=${city_name}&limit=100000000&appid=ca248cee0c1175401424a91fab6b1b59`
       )
       .then((response) => {
         const options = response.data.map((city) => {
