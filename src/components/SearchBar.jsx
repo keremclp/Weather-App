@@ -5,6 +5,7 @@ import axios from "axios";
 import { Combobox, Transition } from "@headlessui/react";
 import Spinner from "../assets/spinner-animated.svg";
 import { GEO_API_URL }  from '../api';
+import { MapPinArea } from "@phosphor-icons/react";
 function SearchBar({ onSearchChange }) {
   const [searchResults, setSearchResults] = useState([]);
   const [query, setQuery] = useState("");
@@ -69,6 +70,10 @@ function SearchBar({ onSearchChange }) {
     setTimeout(() => {
       navigate("/home", { state: { selectedResult } });
     }, 3000);
+  };
+
+  const handleLocationClick = () => {
+    console.log('Hello');
   };
 
   useEffect(() => {
@@ -137,7 +142,7 @@ function SearchBar({ onSearchChange }) {
 
         <Combobox>
           <div className="relative w-full">
-            <div className="text-field">
+            <div className="text-field flex flex-row center space-x-2 w-auto relative">
               <Combobox.Input
                 className="w-full h-auto rounded-lg px-2"
                 value={query}
@@ -145,7 +150,7 @@ function SearchBar({ onSearchChange }) {
                 placeholder="Search location..."
                 onChange={handleOnChange}
               />
-              {selectedOption && (
+              {selectedOption ? (
                 <>
                   <img
                     src={Spinner}
@@ -153,6 +158,12 @@ function SearchBar({ onSearchChange }) {
                     className="w-10 h-10 top-0.75 left-0.75"
                   />
                 </>
+              ) : (
+                <MapPinArea
+                  size={32}
+                  className="cursor-pointer custom-map-pin"
+                  onClick={handleLocationClick}
+                />
               )}
             </div>
             <Transition

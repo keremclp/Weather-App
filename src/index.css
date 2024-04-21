@@ -104,11 +104,6 @@ span{
 
   width: 311px;
   height: 56px;
-
-  /* Base/Gray-600
-
-Input
-*/
   background: #1E1E29;
   border-radius: 8px;
 
@@ -161,4 +156,9 @@ ul li{
     flex: none;
     order: 0;
     flex-grow: 0;
+}
+
+.custom-map-pin path {
+  fill: #8fb2f5;
+  /* Change the fill color to #8fb2f5 */
 }
