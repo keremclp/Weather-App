@@ -1,9 +1,9 @@
 import React, { useState, Fragment, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import Logo from "../Vector.svg";
+import Logo from "../assets/Vector.svg";
 import axios from "axios";
 import { Combobox, Transition } from "@headlessui/react";
-import Spinner from "../spinner-animated.svg";
+import Spinner from "../assets/spinner-animated.svg";
 
 function SearchBar({ onSearchChange }) {
   const [searchResults, setSearchResults] = useState([]);

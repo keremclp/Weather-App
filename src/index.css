@@ -6,7 +6,7 @@
 body {
   margin: 0;
   /*background image from public folder */
-  background-image: url('../assets/background.png');
+  background-image: url('./assets/backgroun-images/background.png');
   /* fit the image*/
   background-size: cover;
   background-position: center;
@@ -136,7 +136,7 @@ ul li{
 }
 
 .current-weather{
-  background-image:   url('../assets/card-background.png');
+  background-image:   url('./assets/backgroun-images/card-background.png');
   background-size: cover;
     background-position: center;
   /* Give radius */

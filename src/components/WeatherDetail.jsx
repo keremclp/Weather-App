@@ -1,9 +1,9 @@
 import React from "react";
-import Thermal from "../thermal.svg";
-import Wind from "../Wind.svg";
-import Rain from "../rain.svg";
-import Humidity from "../Humidity.svg";
-import Sunrise from "../Sunrise.svg";
+import Thermal from "../assets/weather-icons/thermal.svg";
+import Wind from "../assets/weather-icons/Wind.svg";
+import Rain from "../assets/weather-icons/rain.svg";
+import Humidity from "../assets/weather-icons/Humidity.svg";
+import Sunrise from "../assets/weather-icons/Sunrise.svg";
 
 function WeatherDetail({ data }) {
   const thermalSensation = data.main.feels_like;
