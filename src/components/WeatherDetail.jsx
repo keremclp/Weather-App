@@ -6,8 +6,11 @@ import Humidity from "../assets/weather-icons/Humidity.svg";
 import Sunrise from "../assets/weather-icons/Sunrise.svg";
 
 function WeatherDetail({ data }) {
+  if (!data) {
+    return <div>No weather data available</div>;
+  }
   const thermalSensation = data.main.feels_like;
-
+  console.log("data:",data);
   // Calculate rain probability percentage
   const rainProbability = data.main === "Rain" ? "High" : "Low";
   return (
