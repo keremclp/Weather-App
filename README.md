@@ -51,3 +51,4 @@ Bu adımları tamamladıktan sonra, proje yerel olarak çalışacaktır.
 ## Deploy
 
 Bu proje Vercel.com üzerinde dağıtılmıştır. Vercel, deploy işlemleri için kullanıcı dostu bir platformdur.
+https://weather-app-gamma-weld-32.vercel.app/
