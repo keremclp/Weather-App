@@ -66,54 +66,68 @@ function SearchBar({ onSearchChange }) {
   };
 
   const handleOptionClick = async (selectedResult) => {
-    setSelectedOption(selectedResult);
+    setSelectedOption(true);
     setTimeout(() => {
       navigate("/home", { state: { selectedResult } });
     }, 3000);
   };
   
-    const handleLocationClick = () => {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(
-          async (position) => {
-            let lat = position.coords.latitude;
-            let lon = position.coords.longitude;
-            console.log(lat,lon);
-            const weatherResponse = await axios.get(
-              `${WEATHER_API_URL}/weather?lat=${lat}&lon=${lon}&appid=ca248cee0c1175401424a91fab6b1b59&units=metric`
-            );
-            console.log(weatherResponse.data);
-            const city = `${weatherResponse.data.name}, ${weatherResponse.data.sys.country}`;
-            console.log(city);
-            const options = [
-              {
-                value: `${lat} ${lon}`,
-                label: city,
-              },
-            ];
-            console.log(options);
-            onSearchChange(options);
-            setSelectedOption({
-              value: `${lat} ${lon}`,
-              label: city,
-            });
-            navigate("/home", {
-              state: {
-                selectedResult: {
+    const handleLocationClick = async () => {
+      setSelectedOption(true); 
+
+      setTimeout(async () => {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(
+            async (position) => {
+              let lat = position.coords.latitude;
+              let lon = position.coords.longitude;
+              console.log(lat, lon);
+
+              try {
+                const weatherResponse = await axios.get(
+                  `${WEATHER_API_URL}/weather?lat=${lat}&lon=${lon}&appid=ca248cee0c1175401424a91fab6b1b59&units=metric`
+                );
+                console.log(weatherResponse.data);
+                const city = `${weatherResponse.data.name}, ${weatherResponse.data.sys.country}`;
+                console.log(city);
+                const options = [
+                  {
+                    value: `${lat} ${lon}`,
+                    label: city,
+                  },
+                ];
+
+                onSearchChange(options);
+                setSelectedOption({
                   value: `${lat} ${lon}`,
                   label: city,
-                },
-              },
-            });
-          },
-          (error) => {
-            console.error("Error getting user's location:", error);
-          }
-        );
-      } else {
-        console.error("Geolocation is not supported by this browser.");
-      }
+                });
+                navigate("/home", {
+                  state: {
+                    selectedResult: {
+                      value: `${lat} ${lon}`,
+                      label: city,
+                    },
+                  },
+                });
+              } catch (error) {
+                console.error("Error fetching weather data:", error);
+              } finally {
+                setSelectedOption(false); 
+              }
+            },
+            (error) => {
+              console.error("Error getting user's location:", error);
+              setSelectedOption(false); 
+            }
+          );
+        } else {
+          console.error("Geolocation is not supported by this browser.");
+          setSelectedOption(false); 
+        }
+      }, 3000); 
     };
+
 
   useEffect(() => {
     if (searchResults.length > 0) {
@@ -139,14 +153,6 @@ function SearchBar({ onSearchChange }) {
     }
   }, [searchResults]);
 
-  useEffect(() => {
-    // Reset selected option after 3000 milliseconds
-    const timer = setTimeout(() => {
-      setSelectedOption(null);
-    }, 3000);
-
-    return () => clearTimeout(timer);
-  }, [selectedOption]);
 
   return (
     <>
